@@ -12,14 +12,8 @@ public class Estabelecimento {
     private Endereco endereco;
     private String nome;
     private Date dataVendas;
+    private String  cnpj;
     private List<Produto> produtos;
-
-    public Estabelecimento(Endereco endereco, String nome, Date dataVendas, List<Produto> produtos) {
-        this.endereco = endereco;
-        this.nome = nome;
-        this.dataVendas = dataVendas;
-        this.produtos = produtos;
-    }
 
     public Endereco getEndereco() {
         return endereco;
@@ -45,11 +39,28 @@ public class Estabelecimento {
         this.dataVendas = dataVendas;
     }
 
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
     public List<Produto> getProdutos() {
         return produtos;
     }
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
+    }
+
+    public Estabelecimento(Endereco endereco, String nome, Date dataVendas, String cnpj, List<Produto> produtos) {
+        this.endereco = endereco;
+        this.nome = nome;
+        this.dataVendas = dataVendas;
+        this.cnpj = cnpj;
+        this.produtos = produtos;
+
     }
 }
