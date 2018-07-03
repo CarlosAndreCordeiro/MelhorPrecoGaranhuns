@@ -1,29 +1,29 @@
 package com.example.milenamacedo.melhorprecogaranhuns;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.lang.reflect.Field;
+import com.google.gson.Gson;
 
-/**
- * Created by Milena Macedo on 14/06/2018.
- */
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-public class JsonConversor {
+public class JsonConversor{
+    public static void main(String[] args) {
 
-    public static String toJSON(Object object) throws JSONException, IllegalAccessException {
-        String str = "";
-        Class c = object.getClass();
-        JSONObject jsonObject = new JSONObject();
-        for (Field field : c.getDeclaredFields()) {
-            field.setAccessible(true);
-            String name = field.getName();
-            String value = String.valueOf(field.get(object));
-            jsonObject.put(name, value);
+        Gson gson = new Gson();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("C:\\produtos.json"));
+
+            //Converte String JSON para objeto Java
+            Informacoes obj = gson.fromJson(br, Informacoes.class);
+
+            System.out.println(obj);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println(jsonObject.toString());
-        return jsonObject.toString();
+
     }
-
 }
-
